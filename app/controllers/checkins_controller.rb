@@ -28,7 +28,7 @@ class CheckinsController < ApplicationController
 
 	private
 		def checkin_params
-			params.require(:checkin).permit(:address)
+			params.require(:checkin).permit(:longitude, :latitude)
 		end
 
 		def authenticate_user!
