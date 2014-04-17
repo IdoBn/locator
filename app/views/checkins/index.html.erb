@@ -1,0 +1,20 @@
+<h1>Checkins!</h1>
+
+<table>
+	<tr>
+		<td><strong>address</strong></td>
+		<td><strong>latitude</strong></td>
+		<td><strong>longitude</strong></td>
+		<td><strong>user</strong></td>
+	</tr>
+	<% @checkins.each do |checkin| %>
+		<tr>
+			<td><%= checkin.address %></td>
+			<td><%= checkin.latitude %></td>
+			<td><%= checkin.longitude %></td>
+			<td><%= checkin.user.name %></td>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to "new post", new_checkin_path %>

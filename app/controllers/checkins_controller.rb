@@ -1,6 +1,8 @@
 class CheckinsController < ApplicationController
+	before_action :authenticate_user!, only: [:new, :create]
+
 	def index
-		@checkins = Checkins.all
+		@checkins = Checkin.all
 	end
 
 	def new
@@ -22,5 +24,11 @@ class CheckinsController < ApplicationController
 	private
 		def checkin_params
 			params.require(:checkin).permit(:address)
+		end
+
+		def authenticate_user!
+			unless current_user
+				redirect_to checkins_path, notice: 'please log in'
+			end
 		end
 end
