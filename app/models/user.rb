@@ -11,4 +11,16 @@ class User < ActiveRecord::Base
 	    user.save!
   	end
 	end
+
+	def last_checkin
+		self.checkins.order('created_at DESC').first
+	end
+
+	def self.last_checkins
+		users = []
+		User.all.each do |user|
+			users << user.last_checkin
+		end
+		return users.compact
+	end
 end

@@ -2,7 +2,12 @@ class CheckinsController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create]
 
 	def index
-		@checkins = Checkin.all
+		@checkins = User.last_checkins
+		@hash = Gmaps4rails.build_markers(@checkins) do |checkin, marker|
+			marker.lat checkin.latitude
+		  marker.lng checkin.longitude
+		  marker.infowindow checkin.user.name
+		end
 	end
 
 	def new
