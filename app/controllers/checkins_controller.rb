@@ -1,5 +1,5 @@
 class CheckinsController < ApplicationController
-	before_action :authenticate_user!, only: [:new, :create]
+	before_action :authenticate_user!, only: [:create]
 
 	def index
 		@checkins = User.last_checkins
@@ -8,10 +8,6 @@ class CheckinsController < ApplicationController
 		  marker.lng checkin.longitude
 		  marker.infowindow checkin.user.name
 		end
-	end
-
-	def new
-		@checkin = Checkin.new
 	end
 
 	def create
