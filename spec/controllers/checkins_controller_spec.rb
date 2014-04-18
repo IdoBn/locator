@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe CheckinsController do
-	let(:valid_attributes) { FactorGirl.attributes_for(:checkin) }
+	let(:valid_attributes) { FactoryGirl.attributes_for(:checkin) }
 	
 	context 'GET #index' do
 		before :each do
@@ -22,5 +22,41 @@ describe CheckinsController do
 		end
 
 		it { response.should render_template :index }
+	end
+
+	context 'POST #create' do
+		before :each do
+			ApplicationController.any_instance.stub(:current_user).and_return(User.first)
+		end
+
+		describe 'with valid attributes' do
+			it 'creates a new checkin' do
+				expect {
+					post :create, checkin: valid_attributes
+				}.to change { Checkin.count }.by(1)
+			end
+
+			it 'redirects to :index' do
+				post :create, checkin: valid_attributes
+				response.should redirect_to checkins_path
+			end
+		end
+
+		describe 'with invalid attributes' do
+			before :each do
+				Checkin.any_instance.stub(:valid?).and_return(false)
+			end
+
+			it 'does not create checkin' do
+				expect {
+					post :create, checkin: valid_attributes
+				}.to_not change { Checkin.count }
+			end
+
+			it 're-renders index' do
+				post :create, checkin: valid_attributes
+				response.should render_template :index
+			end
+		end
 	end
 end

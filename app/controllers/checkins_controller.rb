@@ -17,7 +17,7 @@ class CheckinsController < ApplicationController
 			if @checkin.save
 				format.html { redirect_to checkins_path, notice: 'checked in!' }
 			else
-				format.html { render action: 'new' }
+				format.html { render action: 'index', notice: 'could not check in' }
 			end
 		end
 	end
