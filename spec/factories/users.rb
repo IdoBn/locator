@@ -13,7 +13,7 @@ FactoryGirl.define do
 
     factory :user2 do
     	uid "100008158123658"
-    	name "Betty Amhaehabcfeh Zamorewitz	"
+    	name "Betty Amhaehabcfeh Zamorewitz"
     	oauth_token "CAAHZCkZAW3QYwBAJDLJYDFuPLzRttWlaU5j6x3AgFdWorSYXypYE7h3JuA03jdGbEk4ccQ8EYOPISGUIS1SOAGG3qHhCetlTlUlvmRS7tvaMP1NRqcSAY3dCBuc22g075qFZCLvrTKB1eerZATBYIqEM02QOKhkuTQPxbrsZCornncIGW6UWHeg25T64Id1wZD"
     end
 
