@@ -70,7 +70,7 @@ RSpec.configure do |config|
        :info   => {:name       => "Sandra Amhbfhjcjbah Fallerman",
                    :email      => "yolxbjw_fallerman_1397751882@tfbnw.net "},
        :credentials => {:token => "CAAHZCkZAW3QYwBAJH2kNMfKQgGFnFlqGXgk8LjU27kSO2bZCygv5gjAiC9wvjs1vZBr8NGLP7m3PZBF057csvtK90UypSZCMa1HZBOnkAaiZA4BgjWn9egWcAbKRfycDQ8EmtbqLu5LLujyXR6z9ZAf9fkSPDRug3JLOd0io7zi3uKE8ej5lsEwi5e4wTqe3SP3EZD",
-                        expires_at: "#{Time.now + 1.hour}"}
+                        expires_at: Time.now + 1.hour}
       }
 
   OmniAuth.config.add_mock(:facebook, omniauth_hash)

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   # facebook callback links
-  get 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:post, :get]
   get 'auth/failure', to: redirect('/')
-  get 'signout', to: 'sessions#destroy', as: 'signout'
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: :delete
 
   resources :checkins, only: [:create, :index]
 
