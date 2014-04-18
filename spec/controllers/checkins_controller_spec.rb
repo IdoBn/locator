@@ -58,5 +58,22 @@ describe CheckinsController do
 				response.should render_template :index
 			end
 		end
+
+		describe 'with out auth' do
+			before :each do
+				ApplicationController.any_instance.unstub(:current_user)
+			end
+
+			it 'does not create checkin' do
+				expect {
+					post :create, checkin: valid_attributes
+				}.to_not change { Checkin.count }
+			end
+
+			it 'redirects to :index' do
+				post :create, checkin: valid_attributes
+				response.should redirect_to checkins_path
+			end
+		end
 	end
 end
