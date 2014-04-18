@@ -26,10 +26,4 @@ class CheckinsController < ApplicationController
 		def checkin_params
 			params.require(:checkin).permit(:longitude, :latitude)
 		end
-
-		def authenticate_user!
-			unless current_user
-				redirect_to checkins_path, notice: 'please log in'
-			end
-		end
 end
