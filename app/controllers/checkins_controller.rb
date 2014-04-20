@@ -7,6 +7,16 @@ class CheckinsController < ApplicationController
 			marker.lat checkin.latitude
 		  marker.lng checkin.longitude
 		  marker.infowindow checkin.user.name
+		  # marker.picture({
+		  # 	"url" => "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png",
+    #     "width" =>  36,
+    #     "height" => 36 })
+		  marker.json({title: checkin.user.name})
+		end
+
+		respond_to do |format|
+		  	format.html
+		  	format.json { render json: @checkins }
 		end
 	end
 
